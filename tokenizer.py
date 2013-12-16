@@ -7,6 +7,7 @@ def tokenizer(filename):
 	viabletext = ""
 	lines = file.readline()
 	word = lines.split()[0]
+	fromsec = ""
 	
 	while ((not (word == "From:")) and not (word == "Subject:")):
 		lines = file.readline()
@@ -14,7 +15,7 @@ def tokenizer(filename):
 
 		
 	if (word == "From:"):
-		viabletext = viabletext + lines
+		fromsec = lines
 		while (not (word == "Subject:")):
 			lines = file.readline()
 			word = lines.split()[0]
@@ -43,7 +44,7 @@ def tokenizer(filename):
 			toks[i] = "JSMONEY"
 		if (not(toks[i].find("http") == -1) or not(toks[i].find("www") == -1)):
 			toks[i] = "JSWEBSITE"
-	return toks
+	return (fromsec, toks)
 
 	
 def tokenizedirs(dirs):
@@ -61,6 +62,8 @@ def tokenizedirs(dirs):
 	for c in classes:
 		print "c =", c[0]
 		print c[1]
+	
+	return classes
 	
 if __name__ == '__main__':
     print 'argv', sys.argv
