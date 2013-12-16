@@ -1,0 +1,20 @@
+Shadia Al-shafei
+
+Idea for spam filtering
+
+features
+1.) bigrams -- to help be better //lowercase + no punctuation
+2.) word length -- does this mean anything 
+3.) unigram words in all caps
+4.) from section, separate from email into username, website, and extension
+5.) multiple punctuation in a row (number of times multiple punctuation in a row appears in an email)
+
+
+** classify will take a dictionary for each feature and have a function to calculate the score for each given feature dictionary and then compile all the scores
+
+tokenizing
+1.) extract from:, and subject: [down]
+2.) change numbers in subject to JSNUM6, JSNUM3, or just JSNUM
+3.) change websites into the word website (if they start with http or www)
+4.) if we see a dollar sign change to JSMONEY
+5.) separate symbols from chars but not from other symbols
