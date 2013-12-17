@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 def BiGramsTokenizer (string) :
 	str = []
 	for word in string[1].split():
@@ -10,8 +12,8 @@ def BiGramsTokenizer (string) :
 def createVocab (allStrings) :
 	dir = {}
 	for string in allStrings:
-		string = BiGramTokenizer(string)
-		for i in range[len(string)-1]:
+		string = BiGramsTokenizer(string)
+		for i in range(len(string)-1):
 			word1 = string[i]
 			word2 = string[i+1]
 			dir[(word1,word2)] += 1

@@ -2,7 +2,7 @@ import sys
 import glob
 import pickle
 from collections import defaultdict
-import naivebayes.py
+import BiGrams
 
 
 def tokenizer(filename):
@@ -62,10 +62,10 @@ def tokenizedirs(dirs):
 		
 		classes.append((dir, dirclass))
 	
-	for c in classes:
+	"""for c in classes:
 		print "c =", c[0]
 		print c[1]
-	
+	"""
 	return classes
 		
 	
@@ -74,5 +74,5 @@ if __name__ == '__main__':
     print "Usage:", sys.argv[0], "classdir1 classdir2 [classdir3...] testfile"
     dirs = sys.argv[1:]
     tk = tokenizedirs(dirs)
-    print "tk is : ", tk
-    naivebayes.biNaiveBayes(tk[0][1])
+    #print "tk is : ", tk
+    #print "bigrams hurray ", BiGrams.biNaiveBayes(tk[0][1])
