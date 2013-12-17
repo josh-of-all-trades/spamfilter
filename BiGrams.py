@@ -1,6 +1,6 @@
 def BiGramsTokenizer (string) :
 	str = []
-	for word in string.split():
+	for word in string[1].split():
 		if word == 'JSNUM' or word == 'JSNUM3' or word == 'JSNUM6' or word == 'JSMONEY':
 			str.append(word)
 			if word.isalpha():
