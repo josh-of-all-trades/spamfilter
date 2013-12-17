@@ -7,6 +7,7 @@ def BiGramsTokenizer (string) :
 			str.append(word)
 			if word.isalpha():
 				str.append(word.tolower())
+	print str
 	return str
 
 def createVocab (allStrings) :
@@ -32,7 +33,8 @@ def biNaiveBayes (spamham) :
 		total = len(countdict.keys())
 		for ele in countdict:
 			countdict[ele] = float(countdict[ele] + m) / float(len(allStrings) + total/m)
-			classes.append((i,countdict))
+			print countdict[ele]
+		classes.append((i,countdict))
 		i += 1
 	return classes
 		

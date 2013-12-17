@@ -74,5 +74,13 @@ if __name__ == '__main__':
     print "Usage:", sys.argv[0], "classdir1 classdir2 [classdir3...] testfile"
     dirs = sys.argv[1:]
     tk = tokenizedirs(dirs)
+<<<<<<< HEAD
     print "tk is : ", tk[0][1]
     print "bigrams hurray ", BiGrams.biNaiveBayes(tk[0][1])
+=======
+    #print "tk is : ", tk
+    print tk
+    print "bigrams hurray "
+    bla = BiGrams.biNaiveBayes(tk[0][1])
+    print bla
+>>>>>>> b36124d4ccf9ea674a28897fc236b607c18cd076
