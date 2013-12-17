@@ -27,12 +27,12 @@ def biNaiveBayes (spamham) :
 		countdict = defaultdict(int, vocab)
 		countdict.update(createVocab(allStrings))
 		m = 1
-        total = len(countdict.keys())
-        for ele in countdict:
-        	countdict[ele] = float(countdict[ele] + m) / float(len(allStrings) + total/m)  
-        classes.append((i,countdict))
-        i += 1
-    return classes
+		total = len(countdict.keys())
+		for ele in countdict:
+			countdict[ele] = float(countdict[ele] + m) / float(len(allStrings) + total/m)
+			classes.append((i,countdict))
+		i += 1
+		return classes
 		
 	
 	
