@@ -75,4 +75,7 @@ if __name__ == '__main__':
     dirs = sys.argv[1:]
     tk = tokenizedirs(dirs)
     #print "tk is : ", tk
-    #print "bigrams hurray ", BiGrams.biNaiveBayes(tk[0][1])
+    print tk
+    print "bigrams hurray "
+    bla = BiGrams.biNaiveBayes(tk[0][1])
+    print bla
