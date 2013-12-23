@@ -15,11 +15,8 @@ class Predictor:
         self.__createdAt = time.strftime("%d %b %H:%M:%S", time.gmtime())
         self.__spamFolder = spamFolder
         self.__hamFolder = hamFolder
-<<<<<<< HEAD
         self.__spamFreqquency = 0
-=======
-        self.__spamFrequency = 0
->>>>>>> 110880871cfd9f61ce442756b5f21dee27ce5567
+
         # do training on spam and ham
         self.__trained = self.__train__()
 
@@ -30,15 +27,10 @@ class Predictor:
         spamCount = len(glob.glob(self.__spamFolder+'/*'))
         hamCount = len(glob.glob(self.__hamFolder+'/*'))
         #self.__spamFrequency = 1.0*spamCount/(spamCount+hamCount)
-<<<<<<< HEAD
         toks = tokenizedirs([self.__spamFolder+'/*', self.__hamFolder+'/*'])
 
         print "mothafucka: ", toks
 
-=======
-        toks = tokenizedirs([self.__spamFolder, self.__hamFolder])
-        print "mothafucka: ", toks
->>>>>>> 110880871cfd9f61ce442756b5f21dee27ce5567
         return biNaiveBayes(toks[:][1])
         
     def getTrained(self):
