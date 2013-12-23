@@ -15,6 +15,7 @@ class Predictor:
         self.__createdAt = time.strftime("%d %b %H:%M:%S", time.gmtime())
         self.__spamFolder = spamFolder
         self.__hamFolder = hamFolder
+        self.__spamFreqquency = 0
         # do training on spam and ham
         self.__trained = self.__train__()
 
@@ -26,11 +27,9 @@ class Predictor:
         hamCount = len(glob.glob(self.__hamFolder+'/*'))
         #self.__spamFrequency = 1.0*spamCount/(spamCount+hamCount)
         toks = tokenizedirs([self.__spamFolder+'/*', self.__hamFolder+'/*'])
-<<<<<<< HEAD
-        print toks
-=======
+
         print "mothafucka: ", toks
->>>>>>> 38a1c70931d56fb3177d71677d6272f5187af802
+
         return biNaiveBayes(toks[:][1])
         
     def getTrained(self):
@@ -123,11 +122,13 @@ def createVocab (allStrings) :
 	return dir
 
 def biNaiveBayes (spamham) :
+	print "spam ham in beNaiveBaives", spamham
 	vocab = defaultdict(int)
 	for allStrings in spamham:
 		vocab.update(createVocab(allStrings))
 	classes = []
 	i = 0
+	print "vocab", vocab
 	for allStrings in spamham:
 		countdict = defaultdict(int, vocab)
 		countdict.update(createVocab(allStrings))
@@ -135,7 +136,7 @@ def biNaiveBayes (spamham) :
 		total = len(countdict.keys())
 		for ele in countdict:
 			countdict[ele] = float(countdict[ele] + m) / float(len(allStrings) + total/m)
-		#print "printing countdict ", countdict[ele]
+			print "printing countdict ", countdict[ele]
 		classes.append((i,countdict))
 		i += 1
 	return classes
