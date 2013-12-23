@@ -26,14 +26,8 @@ class Predictor:
         spamCount = len(glob.glob(self.__spamFolder+'/*'))
         hamCount = len(glob.glob(self.__hamFolder+'/*'))
         #self.__spamFrequency = 1.0*spamCount/(spamCount+hamCount)
-        print self.__spamFolder+'/*'
-        print self.__hamFolder+'/*'
-        toks = tokenizedirs([self.__spamFolder+'/*', self.__hamFolder+'/*'])
-<<<<<<< HEAD
-        print toks
-=======
+        toks = tokenizedirs([self.__spamFolder, self.__hamFolder])
         print "mothafucka: ", toks
->>>>>>> 38a1c70931d56fb3177d71677d6272f5187af802
         return biNaiveBayes(toks[:][1])
         
     def getTrained(self):
