@@ -43,15 +43,32 @@ class Predictor:
         False - filename is not spam (is ham)
         '''
         # do prediction on filename
-        if random.random() <= self.__spamFrequency:
-            return True
-        else:
-            return False
+        answers = []
+        bigrams = bigramify(filename)
+        for i in range(self.__trained):
+        	print "i: ", i
+        	score = 0
+        	for bigram in bigrams:
+        		score = score + math.log(self.__trained[i].get(el,1))
+        
+		print "score = ", score
+        answers.append((score,i))
+        answers.sort()
+        answers.reverse()
+        
+        if (answers[0][1] == 0):
+        	return False
+        else :
+        	return True
 
-	def bigramify(self, str):
-		return "hey"
+
+def bigramify(filename):
+	toks = tokenizer(filename)
+	bigrams = BiGramsTokenizer(toks)
+	return bigrams
 
 def tokenizer(filename):
+	print filename
 	file = open(filename, 'r')
 	viabletext = ""
 	lines = file.readline()
@@ -154,7 +171,7 @@ if __name__ == '__main__':
 			print "trained:  ", predictor.getTrained()
 			files = glob.glob(sys.argv[3]+"/*")
 			for file in files:
-				print predictor.predict('file')
+				print predictor.predict(file)
 			# save to pickle
 			print 'saving predictor to pickle'
 			pickle.dump(predictor, open('predictor.pickle', 'w'))
