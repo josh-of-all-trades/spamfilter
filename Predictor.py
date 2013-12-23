@@ -50,11 +50,10 @@ class Predictor:
         	print "i: ", i
         	score = 0
         	for bigram in bigrams:
-        		print "fuckkk ", self.__trained[i][1][1]
+        		print "fuckkk ", self.__trained[i].get(bigram,1)
         		#score = score + math.log(self.__trained[i][1])
+        	answers.append((score, i))
         
-		print "score = ", score
-        answers.append((score,i))
         answers.sort()
         answers.reverse()
         
