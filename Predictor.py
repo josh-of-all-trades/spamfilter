@@ -27,7 +27,7 @@ class Predictor:
         spamCount = len(glob.glob(self.__spamFolder+'/*'))
         hamCount = len(glob.glob(self.__hamFolder+'/*'))
         #self.__spamFrequency = 1.0*spamCount/(spamCount+hamCount)
-        toks = tokenizedirs([self.__spamFolder+'/*', self.__hamFolder+'/*'])
+        toks = tokenizedirs([self.__spamFolder, self.__hamFolder])
 
         print "mothafucka: ", toks
 
