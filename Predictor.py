@@ -15,7 +15,7 @@ class Predictor:
         self.__createdAt = time.strftime("%d %b %H:%M:%S", time.gmtime())
         self.__spamFolder = spamFolder
         self.__hamFolder = hamFolder
-        self.__spamFreqquency = 0
+        self.__spamFrequency = 0
 
         # do training on spam and ham
         self.__trained = self.__train__()
