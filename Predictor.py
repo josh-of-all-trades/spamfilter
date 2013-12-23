@@ -4,6 +4,7 @@ import random
 import sys
 import os
 import pickle
+import math
 from collections import defaultdict
 
 
@@ -45,11 +46,12 @@ class Predictor:
         # do prediction on filename
         answers = []
         bigrams = bigramify(filename)
-        for i in range(self.__trained):
+        for i in range(len(self.__trained)):
         	print "i: ", i
         	score = 0
         	for bigram in bigrams:
-        		score = score + math.log(self.__trained[i].get(el,1))
+        		print "fuckkk ", self.__trained[i][1][1]
+        		#score = score + math.log(self.__trained[i][1])
         
 		print "score = ", score
         answers.append((score,i))
@@ -140,13 +142,13 @@ def createVocab (allStrings) :
 	return dir
 
 def biNaiveBayes (spamham) :
-	print "spam ham in beNaiveBaives", spamham
+	#print "spam ham in beNaiveBaives", spamham
 	vocab = defaultdict(int)
 	for allStrings in spamham:
 		vocab.update(createVocab(allStrings))
 	classes = []
 	i = 0
-	print "vocab", vocab
+	#print "vocab", vocab
 	for allStrings in spamham:
 		countdict = defaultdict(int, vocab)
 		countdict.update(createVocab(allStrings))
@@ -154,7 +156,7 @@ def biNaiveBayes (spamham) :
 		total = len(countdict.keys())
 		for ele in countdict:
 			countdict[ele] = float(countdict[ele] + m) / float(len(allStrings) + total/m)
-			print "printing countdict ", countdict[ele]
+			#print "printing countdict ", countdict[ele]
 		classes.append((i,countdict))
 		i += 1
 	return classes
@@ -168,7 +170,7 @@ if __name__ == '__main__':
 		if (os.path.isdir(sys.argv[1]) and os.path.isdir(sys.argv[2])):
 			print "training"
 			predictor = Predictor(sys.argv[1], sys.argv[2])
-			print "trained:  ", predictor.getTrained()
+			#print "trained:  ", predictor.getTrained()
 			files = glob.glob(sys.argv[3]+"/*")
 			for file in files:
 				print predictor.predict(file)
