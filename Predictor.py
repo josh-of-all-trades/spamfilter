@@ -29,7 +29,6 @@ class Predictor:
         hamCount = len(glob.glob(self.__hamFolder+'/*'))
         #self.__spamFrequency = 1.0*spamCount/(spamCount+hamCount)
         toks = tokenizedirs([self.__spamFolder, self.__hamFolder])
-        print biNaiveBayes(toks[:][1])
         return biNaiveBayes(toks[:][1])
         
     def getTrained(self):
@@ -45,16 +44,19 @@ class Predictor:
         answers = []
         bigrams = bigramify(filename)
         for i in range(len(self.__trained)):
-        	print "i: ", i
+        	#print "i: ", i
         	score = 0
         	for j in range(len(bigrams) - 1):
 
-        		print "fuckkk ", self.__trained[i][1][(bigrams[j], bigrams[j+1])]
-
-        	    print "why ", isinstance(self.__trained[i], tuple)
-        		#why is it trained[i][1] not trained[i][bigram tuple thing]
-        		#score = score + math.log(self.__trained[i][1])
+        		#print "fuckkk ", self.__trained[i][1][(bigrams[j], bigrams[j+1])]
+        		tempscore = self.__trained[i][1][(bigrams[j], bigrams[j+1])]
+        		#sorry for this really bad smoothing technique but it's late
+        		if tempscore == 0:
+        			tempscore = 0.000000000000000001
+				#why is it trained[i][1] not trained[i][bigram tuple thing]
+        		score = score + math.log(tempscore)
         	answers.append((score, i))
+        	print "i : score", i, score
         
         answers.sort()
         answers.reverse()
@@ -171,7 +173,6 @@ if __name__ == '__main__':
 		if (os.path.isdir(sys.argv[1]) and os.path.isdir(sys.argv[2])):
 			print "training"
 			predictor = Predictor(sys.argv[1], sys.argv[2])
-			#print "trained:  ", predictor.getTrained()
 			files = glob.glob(sys.argv[3]+"/*")
 			for file in files:
 				print predictor.predict(file)
