@@ -65,5 +65,5 @@ if __name__ == '__main__':
     #print "tk is : ", tk
     #print "tk: ", tk
     print "bigrams hurray "
-    bla = BiGrams.biNaiveBayes(tk[0][1])
+    bla = BiGrams.biNaiveBayes(tk[:][1])
     print "bla ", bla
