@@ -48,12 +48,10 @@ class Predictor:
         	print "i: ", i
         	score = 0
         	for j in range(len(bigrams) - 1):
-<<<<<<< HEAD
-        		print "fuckkk ", self.__trained[i][i][(bigrams[j], bigrams[j+1])]
-=======
+
+        		print "fuckkk ", self.__trained[i][1][(bigrams[j], bigrams[j+1])]
+
         	    print "why ", isinstance(self.__trained[i], tuple)
-        	    print "fuckkk ", self.__trained[i][(bigrams[j], bigrams[j+1])]
->>>>>>> b7db7255e2179e44b9e7fe3b15e9d56cb17acbf0
         		#why is it trained[i][1] not trained[i][bigram tuple thing]
         		#score = score + math.log(self.__trained[i][1])
         	answers.append((score, i))
