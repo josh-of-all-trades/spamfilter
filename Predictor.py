@@ -26,6 +26,7 @@ class Predictor:
         hamCount = len(glob.glob(self.__hamFolder+'/*'))
         #self.__spamFrequency = 1.0*spamCount/(spamCount+hamCount)
         toks = tokenizedirs([self.__spamFolder+'/*', self.__hamFolder+'/*'])
+        print toks
         return biNaiveBayes(toks[:][1])
         
     def getTrained(self):
