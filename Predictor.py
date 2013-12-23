@@ -30,8 +30,6 @@ class Predictor:
         #self.__spamFrequency = 1.0*spamCount/(spamCount+hamCount)
         toks = tokenizedirs([self.__spamFolder, self.__hamFolder])
 
-        print "mothafucka: ", toks
-
         return biNaiveBayes(toks[:][1])
         
     def getTrained(self):
@@ -49,8 +47,8 @@ class Predictor:
         for i in range(len(self.__trained)):
         	print "i: ", i
         	score = 0
-        	for bigram in bigrams:
-        		print "fuckkk ", self.__trained[i].get(bigram,1)
+        	for j in range(len(bigrams) - 1):
+        		print "fuckkk ", self.__trained[i].[(bigrams[j], bigrams[j+1])]
         		#score = score + math.log(self.__trained[i][1])
         	answers.append((score, i))
         
