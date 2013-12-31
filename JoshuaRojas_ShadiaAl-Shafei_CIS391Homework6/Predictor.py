@@ -48,7 +48,6 @@ class Predictor:
         	score = 0
         	for j in range(len(bigrams) - 1):
 
-        		#print "fuckkk ", self.__trained[i][1][(bigrams[j], bigrams[j+1])]
         		tempscore = self.__trained[i][1][(bigrams[j], bigrams[j+1])]
         		#sorry for this really bad smoothing technique but it's late
         		if tempscore == 0:
@@ -171,12 +170,12 @@ if __name__ == '__main__':
 	else:
 		if (os.path.isdir(sys.argv[1]) and os.path.isdir(sys.argv[2])):
 			print "training"
-			predictor = Predictor(sys.argv[1], sys.argv[2])
-			files = glob.glob(sys.argv[3]+"/*")
-			for file in files:
-				print predictor.predict(file)
+			#predictor = Predictor(sys.argv[1], sys.argv[2])
+			#files = glob.glob(sys.argv[3]+"/*")
+			#for file in files:
+			#	print predictor.predict(file)
 			# save to pickle
-			print 'saving predictor to pickle'
-			pickle.dump(predictor, open('predictor.pickle', 'w'))
+			#print 'saving predictor to pickle'
+			#pickle.dump(predictor, open("predictor.pickle", 'w'))
 		else:
 			print "you can't train on this :( sorry qq"
